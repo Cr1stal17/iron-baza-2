@@ -10,7 +10,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: 
         linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url('https://github.com/Cr1stal17/iron-baza-2/blob/main/photo.png');
+        url('https://github.com/Cr1stal17/iron-baza-2/blob/main/photo.png?raw=true');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
