@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Расписание растяжки</title>
+    <!-- Подключение иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Подключение ваших стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-calendar-alt"></i> Расписание растяжки</h1>
+            <p class="subtitle">Нажмите на ячейку для выбора • Ctrl+Клик для множественного выбора • Shift+Клик для выделения диапазона</p>
+        </header>
+        
+        <div class="main-content">
+            <!-- Панель редактирования ячеек -->
+            <div class="edit-panel" id="editPanel">
+                <div class="edit-title">
+                    <span>Редактирование ячеек</span>
+                    <i class="fas fa-times" id="closeEditPanel"></i>
+                </div>
+                
+                <!-- Редактирование текста -->
+                <div class="edit-section">
+                    <div class="section-title">
+                        <i class="fas fa-font"></i>
+                        Текст
+                    </div>
+                    
+                    <div class="edit-group">
+                        <label class="edit-label">Содержимое:</label>
+                        <textarea class="edit-input" id="cellContent" rows="3" placeholder="Введите текст..."></textarea>
+                    </div>
+                    
+                    <div class="text-tools">
+                        <button class="text-btn" id="btnBold" title="Жирный">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button class="text-btn" id="btnItalic" title="Курсив">
+                            <i class="fas fa-italic"></i>
+                        </button>
+                        <button class="text-btn" id="btnUnderline" title="Подчеркивание">
+                            <i class="fas fa-underline"></i>
+                        </button>
+                        <button class="text-btn" id="btnClearFormat" title="Очистить формат">
+                            <i class="fas fa-eraser"></i>
+                        </button>
+                        <button class="text-btn" id="btnClearText" title="Очистить текст">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Выбор цвета -->
+                <div class="edit-section">
+                    <div class="section-title">
+                        <i class="fas fa-palette"></i>
+                        Цвет ячейки
+                    </div>
+                    
+                    <div class="color-picker">
+                        <div class="color-option" style="background: rgba(40, 40, 40, 0.6);" data-color="default"></div>
+                        <div class="color-option" style="background: rgba(106, 17, 203, 0.4);" data-color="primary"></div>
+                        <div class="color-option" style="background: rgba(255, 107, 107, 0.4);" data-color="important"></div>
+                        <div class="color-option" style="background: rgba(40, 167, 69, 0.4);" data-color="success"></div>
+                        <div class="color-option" style="background: rgba(255, 193, 7, 0.4);" data-color="warning"></div>
+                        <div class="color-option" style="background: rgba(23, 162, 184, 0.4);" data-color="info"></div>
+                        <div class="color-option" style="background: rgba(108, 117, 125, 0.4);" data-color="secondary"></div>
+                        <div class="color-option" style="background: rgba(52, 58, 64, 0.6);" data-color="dark"></div>
+                    </div>
+                </div>
+                
+                <!-- Выбор иконки -->
+                <div class="edit-section">
+                    <div class="section-title">
+                        <i class="fas fa-icons"></i>
+                        Иконка
+                    </div>
+                    
+                    <div class="icon-grid">
+                        <div class="icon-option" data-icon="none">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <div class="icon-option" data-icon="yoga">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <div class="icon-option" data-icon="run">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <div class="icon-option" data-icon="sun">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="icon-option" data-icon="moon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <div class="icon-option" data-icon="star">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="icon-option" data-icon="heart">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="icon-option" data-icon="fire">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="icon-option" data-icon="dumbbell">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="icon-option" data-icon="user-md">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="icon-option" data-icon="child">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <div class="icon-option" data-icon="water">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="icon-option" data-icon="clock">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="icon-option" data-icon="check">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="icon-option" data-icon="exclamation">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="icon-option" data-icon="users">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Действия -->
+                <div class="edit-section">
+                    <div class="section-title">
+                        <i class="fas fa-cog"></i>
+                        Действия
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <button class="btn btn-success" id="applyChanges">
+                            <i class="fas fa-check"></i> Применить
+                        </button>
+                        <button class="btn btn-danger" id="cancelChanges">
+                            <i class="fas fa-times"></i> Отмена
+                        </button>
+                        <button class="btn" id="copyCell">
+                            <i class="fas fa-copy"></i> Копировать
+                        </button>
+                        <button class="btn" id="pasteCell">
+                            <i class="fas fa-paste"></i> Вставить
+                        </button>
+                        <button class="btn btn-edit" id="applyToAll" style="grid-column: span 2;">
+                            <i class="fas fa-expand-arrows-alt"></i> Применить ко всем выделенным
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Информация о ячейках -->
+                <div class="edit-section">
+                    <div class="section-title">
+                        <i class="fas fa-info-circle"></i>
+                        Информация
+                    </div>
+                    
+                    <div class="edit-group">
+                        <div class="edit-label">Выделено ячеек:</div>
+                        <div id="selectedCount" style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">0</div>
+                    </div>
+                    
+                    <div class="edit-group">
+                        <div class="edit-label">Позиция:</div>
+                        <div id="cellPosition" style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Не выбрана</div>
+                    </div>
+                    
+                    <div class="edit-group">
+                        <div class="edit-label">Размер текста:</div>
+                        <input type="range" class="edit-input" id="fontSize" min="12" max="24" value="16">
+                    </div>
+                    
+                    <div class="edit-group">
+                        <div class="edit-label">Выравнивание:</div>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="text-btn" id="alignLeft" title="По левому краю">
+                                <i class="fas fa-align-left"></i>
+                            </button>
+                            <button class="text-btn" id="alignCenter" title="По центру">
+                                <i class="fas fa-align-center"></i>
+                            </button>
+                            <button class="text-btn" id="alignRight" title="По правому краю">
+                                <i class="fas fa-align-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="edit-group">
+                        <button class="btn" id="selectAllBtn">
+                            <i class="fas fa-check-double"></i> Выделить всю таблицу
+                        </button>
+                        <button class="btn btn-danger" id="clearSelectionBtn">
+                            <i class="fas fa-times-circle"></i> Снять выделение
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Основная область с таблицей -->
+            <div class="table-container">
+                <table id="scheduleTable">
+                    <thead>
+                        <tr id="tableHeader">
+                            <th>Время</th>
+                            <th>Понедельник</th>
+                            <th>Вторник</th>
+                            <th>Среда</th>
+                            <th>Четверг</th>
+                            <th>Пятница</th>
+                            <th>Суббота</th>
+                            <th>Воскресенье</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Тело таблицы будет заполнено JS или дефолтным HTML -->
+                        <tr>
+                            <th>9:00-10:00</th>
+                            <td><i class="fas fa-spa cell-icon"></i>Утренняя йога</td>
+                            <td><i class="fas fa-running cell-icon"></i>Стретчинг</td>
+                            <td><i class="fas fa-spa cell-icon"></i>Йога</td>
+                            <td></td>
+                            <td><i class="fas fa-dumbbell cell-icon"></i>Пилатес</td>
+                            <td><i class="fas fa-child cell-icon"></i>Гибкость</td>
+                            <td></td>
+                        </tr>
+                        <!-- Остальные строки... -->
+                         <tr>
+                            <th>11:00-12:00</th>
+                            <td></td>
+                            <td><i class="fas fa-user-md cell-icon"></i>Растяжка спины</td>
+                            <td><i class="fas fa-dumbbell cell-icon"></i>Пилатес+стретчинг</td>
+                            <td><i class="fas fa-spa cell-icon"></i>Йога</td>
+                            <td></td>
+                            <td><i class="fas fa-tint cell-icon"></i>Глубокая растяжка</td>
+                            <td><i class="fas fa-spa cell-icon"></i>Йога</td>
+                        </tr>
+                        <tr>
+                            <th>14:00-15:00</th>
+                            <td><i class="fas fa-walking cell-icon"></i>Растяжка ног</td>
+                            <td></td>
+                            <td><i class="fas fa-sun cell-icon"></i>Утренняя йога</td>
+                            <td><i class="fas fa-child cell-icon"></i>Гибкое тело</td>
+                            <td><i class="fas fa-spa cell-icon"></i>Йога</td>
+                            <td></td>
+                            <td><i class="fas fa-couch cell-icon"></i>Релакс</td>
+                        </tr>
+                        <tr>
+                            <th>17:00-18:00</th>
+                            <td><i class="fas fa-briefcase cell-icon"></i>После работы</td>
+                            <td><i class="fas fa-user-graduate cell-icon"></i>Для начинающих</td>
+                            <td><i class="fas fa-tint cell-icon"></i>Глубокая растяжка</td>
+                            <td><i class="fas fa-dumbbell cell-icon"></i>Пилатес</td>
+                            <td><i class="fas fa-moon cell-icon"></i>Вечерняя</td>
+                            <td><i class="fas fa-spa cell-icon"></i>Йога</td>
+                            <td><i class="fas fa-running cell-icon"></i>Стретчинг</td>
+                        </tr>
+                        <tr>
+                            <th>19:00-20:00</th>
+                            <td></td>
+                            <td><i class="fas fa-user-md cell-icon"></i>Растяжка спины</td>
+                            <td></td>
+                            <td><i class="fas fa-walking cell-icon"></i>Стретчинг ног</td>
+                            <td><i class="fas fa-tint cell-icon"></i>Глубокая</td>
+                            <td><i class="fas fa-moon cell-icon"></i>Вечерняя</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Панель управления -->
+        <div class="controls">
+            <button class="btn" id="addRowBtn">
+                <i class="fas fa-plus"></i> Добавить строку
+            </button>
+            <button class="btn" id="addColBtn">
+                <i class="fas fa-plus"></i> Добавить столбец
+            </button>
+            <button class="btn btn-edit" id="editCellBtn">
+                <i class="fas fa-edit"></i> Редактировать ячейку
+            </button>
+            <button class="btn btn-success" id="saveTableBtn">
+                <i class="fas fa-save"></i> Сохранить
+            </button>
+            <button class="btn btn-danger" id="resetTableBtn">
+                <i class="fas fa-redo"></i> Сбросить
+            </button>
+        </div>
+        
+        <!-- Нижняя панель информации -->
+        <div class="bottom-panel">
+            <div id="tableInfo">Таблица: 5×8 ячеек</div>
+            <div id="lastSaved">Сохранено: только что</div>
+            <div id="selectedInfo">Выбрано ячеек: 0</div>
+        </div>
+        
+        <!-- Уведомления -->
+        <div class="notification" id="notification">
+            Готово к работе!
+        </div>
+    </div>
+
+    <!-- Подключение вашего скрипта -->
+    <script src="script.js"></script>
+</body>
+</html>
